@@ -3,8 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
-	"net/http"
 	"os"
 	"runtime"
 	"time"
@@ -80,7 +78,6 @@ https://github.com/XIU2/CloudflareSpeedTest
 	flag.IntVar(&utils.PrintNum, "p", 10, "显示结果数量")
 	flag.StringVar(&utils.Output, "o", "result.csv", "输出结果文件")
 	flag.BoolVar(&printVersion, "v", false, "打印程序版本")
-	flag.BoolVar(&noUpdateCheck, "no-update", false, "禁止检查更新")
 	flag.Usage = func() { fmt.Print(help) }
 	flag.Parse()
 
@@ -93,22 +90,11 @@ https://github.com/XIU2/CloudflareSpeedTest
 
 	if printVersion {
 		println(version)
-		fmt.Println("检查版本更新中...")
-		checkUpdate()
-		if versionNew != "" {
-			fmt.Printf("*** 发现新版本 [%s]！请前往 [https://github.com/XIU2/CloudflareSpeedTest] 更新！ ***", versionNew)
-		} else {
-			fmt.Println("当前为最新版本 [" + version + "]！")
-		}
 		os.Exit(0)
 	}
 }
 
 func main() {
-
-	if !noUpdateCheck {
-		go checkUpdate() // 检查版本更新
-	}
 
 	task.InitRandSeed() // 置随机数种子
 
@@ -120,10 +106,7 @@ func main() {
 	speedData := task.TestDownloadSpeed(pingData)
 	utils.ExportCsv(speedData)
 	speedData.Print(task.IPv6)
-
-	if versionNew != "" {
-		fmt.Printf("\n*** 发现新版本 [%s]！请前往 [https://github.com/XIU2/CloudflareSpeedTest] 更新！ ***\n", versionNew)
-	}
+	
 	endPrint()
 }
 
