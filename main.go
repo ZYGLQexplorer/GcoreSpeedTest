@@ -13,15 +13,16 @@ import (
 
 var (
 	version, versionNew string
-	noUpdateCheck       bool
 )
 
 func init() {
 	var printVersion bool
 	var help = `
-CloudflareSpeedTest ` + version + `
-测试 Cloudflare CDN 所有 IP 的延迟和速度，获取最快 IP (IPv4+IPv6)！
-https://github.com/XIU2/CloudflareSpeedTest
+GcoreSpeedtest ` + version + `
+测试 Gcore CDN 所有 IP 的延迟和速度，获取最快 IP (IPv4+IPv6)！
+https://github.com/ZYGLQexplorer/GcoreSpeedTest
+
+修改自 https://github.com/XIU2/CloudflareSpeedTest
 
 参数：
     -n 200
@@ -34,7 +35,7 @@ https://github.com/XIU2/CloudflareSpeedTest
         下载测速数量；延迟测速并排序后，从最低延迟起下载测速的数量；(默认 10 个)
     -dt 10
         下载测速时间；单个 IP 下载测速最长时间，不能太短；(默认 10 秒)
-    -url https://cf.xiu2.xyz/url
+    -url https://gcore.zeroyuki.cn/200MB
         下载测速地址；用来下载测速的 Cloudflare CDN 文件地址，默认地址不保证可用性，建议自建；
     -tl 200
         平均延迟上限；只输出低于指定平均延迟的 IP，可与其他上限/下限搭配；(默认 9999 ms)
@@ -56,8 +57,6 @@ https://github.com/XIU2/CloudflareSpeedTest
         测速全部的IP；对 IP 段中的每个 IP (仅支持 IPv4) 进行测速；(默认 每个 IP 段随机测速一个 IP)
     -v
         打印程序版本 + 检查版本更新
-    --no-update
-        禁止检查更新
     -h
         打印帮助说明
 `
@@ -98,7 +97,7 @@ func main() {
 
 	task.InitRandSeed() // 置随机数种子
 
-	fmt.Printf("# XIU2/CloudflareSpeedTest %s \n\n", version)
+	fmt.Printf("# ZYGLQexplorer/GcoreSpeedtest %s \n\n", version)
 
 	// 开始延迟测速
 	pingData := task.NewPing().Run().FilterDelay()
