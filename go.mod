@@ -1,4 +1,4 @@
-module CloudflareSpeedTest
+module GcoreSpeedTest
 
 go 1.14
 
