@@ -9,7 +9,7 @@ import (
 	"sort"
 	"time"
 
-	"CloudflareSpeedTest/utils"
+	"GcoreSpeedTest/utils"
 
 	"github.com/VividCortex/ewma"
 )
