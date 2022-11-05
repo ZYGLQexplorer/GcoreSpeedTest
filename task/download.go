@@ -16,7 +16,7 @@ import (
 
 const (
 	bufferSize                     = 1024
-	defaultURL                     = "https://gcore.zeroyuki.cn/200MB-test.zip"
+	defaultURL                     = "https://gcore.zeroyuki.cn/200MB"
 	defaultTimeout                 = 10 * time.Second
 	defaultDisableDownload         = false
 	defaultTestNum                 = 10
