@@ -136,23 +136,3 @@ func endPrint() {
 		fmt.Scanln()
 	}
 }
-
-// 检查更新
-func checkUpdate() {
-	timeout := 10 * time.Second
-	client := http.Client{Timeout: timeout}
-	res, err := client.Get("https://api.xiu2.xyz/ver/cloudflarespeedtest.txt")
-	if err != nil {
-		return
-	}
-	// 读取资源数据 body: []byte
-	body, err := ioutil.ReadAll(res.Body)
-	if err != nil {
-		return
-	}
-	// 关闭资源流
-	defer res.Body.Close()
-	if string(body) != version {
-		versionNew = string(body)
-	}
-}
