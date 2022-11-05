@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"CloudflareSpeedTest/utils"
+	"GcoreSpeedTest/utils"
 )
 
 const (
