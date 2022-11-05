@@ -7,8 +7,8 @@ import (
 	"runtime"
 	"time"
 
-	"CloudflareSpeedTest/task"
-	"CloudflareSpeedTest/utils"
+	"GcoreSpeedTest/task"
+	"GcoreSpeedTest/utils"
 )
 
 var (
